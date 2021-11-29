@@ -7,6 +7,7 @@ import Login from './screens/Login';
 import Register from './screens/Register';
 import UserProfileUpdate from './screens/userProfileUpdate';
 import './utils/global.css'
+import reportWebVitals from './reportWebVitals'
 
 ReactDOM.render(
   <React.StrictMode>
