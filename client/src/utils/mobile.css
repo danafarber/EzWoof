@@ -247,3 +247,14 @@ select::placeholder {
 .startNow:hover {
     background:var(--light-secondary)
 }
+ 
+.profileUpdate h1
+{
+    font-family: 'Assistant',sans-serif;
+
+    font-size: 24px;
+    font-weight: bold;
+    color:var(--primary);
+    text-align: center;
+    margin-bottom: 0 !important;
+}
