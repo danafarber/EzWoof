@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom';
 import { Routes , Route, BrowserRouter as Router, BrowserRouter } from 'react-router-dom';
 import AdminLogin from './screens/AdminLogin';
 import Home from './screens/Home';
+import WaitForApproval from './screens/WaitForApproval';
 import Login from './screens/Login';
 import Register from './screens/Register';
+import TrainerProfileUpdate from './screens/TrainerProfileUpdate';
 import UserProfileUpdate from './screens/userProfileUpdate';
+import UserSetittings from './screens/UserSettings';
 import './utils/global.css'
 import reportWebVitals from './reportWebVitals'
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +24,12 @@ ReactDOM.render(
       <Route exact path='register' element={<Register/>}>
       </Route>
       <Route exact path='register/user-profile' element={<UserProfileUpdate/>}>
+      </Route>
+      <Route exact path='register/trainer-profile' element={<TrainerProfileUpdate/>}>
+      </Route>
+      <Route exact path='register/trainer-waitApproval' element={<WaitForApproval/>}>
+      </Route>
+      <Route exact path='settings-user' element={<UserSetittings/>}>
       </Route>
       <Route exact path='/' element={<Home/>}>
       </Route>
