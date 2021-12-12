@@ -45,6 +45,10 @@ const trainerSchema = new mongoose.Schema({
 
     pricing: {
         type:Number,
+    },
+    verifiedStatus: {
+        type:Boolean,
+        default:false
     }
 
 

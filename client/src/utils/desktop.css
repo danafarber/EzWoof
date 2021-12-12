@@ -56,3 +56,211 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background: var(--light-secondary);
 }
+
+.AdminTopbar
+{
+    width:100%;
+    height: 50px;
+    background-color:white ;
+}
+.topbarWrapper
+{
+    height: 100%;
+    padding:0px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard-container {
+    width:1286px;
+    height:100%;
+    background: url('../assets/admin_bg.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Assistant',sans-serif;
+}
+
+.top-bar {
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height: 70px;
+    background: var(--light-primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.11);
+    font-family: 'Assistant',sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top-bar .grid {
+    width: 1286px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-bar .grid h2 {
+    font-size:23px;
+    font-weight: 400;
+    color:var(--text);
+}
+
+.top-bar .grid button {
+    background:transparent;
+    cursor: pointer;
+    font-size:18px;
+    font-weight: 400;
+    color:var(--text);
+    border:0;
+    outline:0;
+    transition: all .2s ease-in-out;
+}
+
+.top-bar .grid button:hover {
+    color:#E27878;
+    transform: scale(0.9);
+}
+
+.stats {
+    width:100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap:24px;
+}
+
+.stats .usersCount {
+    color: var(--primary);
+    display: flex;
+    flex-direction: column;
+}
+
+.stats .trainersCount {
+    color: var(--secondary);
+    display: flex;
+    flex-direction: column;
+}
+
+.stats .matchesCount {
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+}
+
+.stats h2 {
+    font-size: 150px;
+    font-weight: bold;
+    margin:0;
+}
+.stats h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin:0;
+}
+
+.trainer-row {
+    width:100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap:24px;
+    color:var(--text);
+    font-family: 'Assistant',sans-serif;
+    transition: background .1s ease-in-out;
+}
+
+.trainer-row:hover {
+    background:#DBEBEF;
+}
+
+.trainer-row img {
+    width:64px;
+    height:64px;
+    object-fit: cover;
+}
+
+.trainer-row h2 {
+    font-size:24px;
+    font-weight: bold;
+}
+
+.trainer-row h3 {
+    font-size:22px;
+    font-weight: 400;
+}
+
+.trainer-row button {
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background:transparent;
+}
+
+.trainer-row button img {
+    width:32px;
+    height:32px;
+    transition: transform .2s ease-in-out;
+}
+
+.trainer-row button img:hover {
+    transform: scale(0.9);
+}
+
+
+.admin-list {
+    width:100vw;
+    height:200px;
+    background:var(--light-primary);
+ 
+}
+
+.admin-list .grid {
+    width: 1286px;
+    margin:auto;
+    padding-top:4rem;
+}
+
+.user-row {
+    width:100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap:24px;
+    color:var(--text);
+    font-family: 'Assistant',sans-serif;
+    transition: background .1s ease-in-out;
+}
+
+.user-row:hover {
+    background:#DBEBEF;
+}
+
+.user-row h2 {
+    font-size:24px;
+    font-weight: bold;
+}
+
+.user-row button {
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background:transparent;
+}
+
+.user-row button img {
+    width:32px;
+    height:32px;
+    transition: transform .2s ease-in-out;
+}
+
+.user-row button img:hover {
+    transform: scale(0.9);
+}

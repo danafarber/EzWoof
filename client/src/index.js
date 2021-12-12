@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Routes , Route, BrowserRouter as Router, BrowserRouter } from 'react-router-dom';
 import AdminLogin from './screens/AdminLogin';
+
 import Home from './screens/Home';
 import WaitForApproval from './screens/WaitForApproval';
 import Login from './screens/Login';
 import Register from './screens/Register';
 import TrainerProfileUpdate from './screens/TrainerProfileUpdate';
 import UserProfileUpdate from './screens/userProfileUpdate';
-import UserSetittings from './screens/UserSettings';
 import './utils/global.css'
 import reportWebVitals from './reportWebVitals'
+import AdminDashboard from './screens/AdminDashboard';
 
 
 ReactDOM.render(
@@ -27,9 +28,9 @@ ReactDOM.render(
       </Route>
       <Route exact path='register/trainer-profile' element={<TrainerProfileUpdate/>}>
       </Route>
-      <Route exact path='register/trainer-waitApproval' element={<WaitForApproval/>}>
+      <Route exact path='register/wait-for-approval' element={<WaitForApproval/>}>
       </Route>
-      <Route exact path='settings-user' element={<UserSetittings/>}>
+      <Route exact path='admin/dashboard' element={<AdminDashboard/>}>
       </Route>
       <Route exact path='/' element={<Home/>}>
       </Route>

@@ -43,6 +43,53 @@ router.post('/', async (req,res) => {
     }
 })
 
+// update trainer
+router.patch('/:id', getTrainer, async (req,res) => {
+    if (req.body.name != null) {
+        res.trainer.name = req.body.name
+    }
+
+    if (req.body.email != null) {
+        res.trainer.email = req.body.email
+    }
+
+    if (req.body.password != null) {
+        res.trainer.password = req.body.password
+    }
+
+    if(req.body.tip != null) {
+        res.trainer.tip = req.body.tip
+    }
+
+    if(req.body.pricing != null) {
+        res.trainer.pricing = req.body.pricing
+    }
+
+    if(req.body.verifiedStatus != null) {
+        res.trainer.verifiedStatus = req.body.verifiedStatus
+    }
+
+    try {
+        const updatedTrainer = await res.trainer.save()
+        res.json(updatedTrainer)
+    }
+
+    catch(err) {
+        res.status(400).json({message: err.message})
+    }
+});
+
+// delete trainer
+router.delete('/:id', getTrainer, async (req,res) => {
+    try {
+        await res.trainer.remove()
+        res.json({message: 'Trainer Deleted'})
+    }
+    catch(err) {
+        res.status(500).json({message: err.message});
+    }
+})
+
 // middlefunction
 async function getTrainer(req,res,next) {
     let trainer

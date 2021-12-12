@@ -258,3 +258,11 @@ select::placeholder {
     text-align: center;
     margin-bottom: 0 !important;
 }
+
+.welcome-msg {
+    margin:0;
+}
+
+.welcome-img {
+    margin-bottom:0 !important;
+}

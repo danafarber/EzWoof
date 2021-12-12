@@ -1,11 +1,13 @@
 import React from "react";
 
-function WaitForApproval()
-{
+function WaitForApproval(props) {
+
+    let name = props.name;
+
  return(
     <div data-testid="waitForApproval" className="main">
-        <img src="../assets/waitApproval.png" ></img>
-        <h1>היי זלמה! </h1>
+        <img className="welcome-img" src="../assets/waitApproval.png" ></img>
+        <h1 className="welcome-msg">היי {name}! </h1>
         <p className="content"> 
         
         תודה שנרשמת לשירות!

@@ -25,7 +25,7 @@ function TrainerProfileUpdate()
     const breedsURL = "https://powerful-sierra-82767.herokuapp.com/utils/breeds";
     const citiesURL = "https://powerful-sierra-82767.herokuapp.com/utils/cities";
     const expertiseURL = "https://powerful-sierra-82767.herokuapp.com/utils/expertise"
-    const usersURL = "https://powerful-sierra-82767.herokuapp.com/users/61a488dd56699ad92625ffd2";
+    const trainersURL = "https://powerful-sierra-82767.herokuapp.com/trainers/61b248b0cd79df2124dcf283";
 
 
     React.useEffect(() => {
@@ -74,7 +74,7 @@ function TrainerProfileUpdate()
             'Content-Type': 'application/json'
           }
     
-        axios.post(usersURL, userObj, {
+        axios.post(trainersURL, userObj, {
             headers: headers
         })
         .then(response => { 
@@ -90,7 +90,7 @@ function TrainerProfileUpdate()
 
 
     return(
-        <div className="profileCompletion">
+        <div data-testid="trainerProfile" className="profileCompletion">
 
             <h1>היי,</h1>
             <h2>ספר לנו קצת על עצמך:</h2>
@@ -121,7 +121,7 @@ function TrainerProfileUpdate()
                     {cities.map((cityPop) => <option value={cityPop._id}>{cityPop.name}</option>)}
                 </select>
                     
-                <input type="submit" value="אשר פרופיל" onClick={updateProfile}></input>
+                <input type="submit" value="אשר פרופיל" onClick={updateProfile} name={name}></input>
                 </form>
                 
         </div>
