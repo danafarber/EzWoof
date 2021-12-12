@@ -1,0 +1,268 @@
+.tabs {
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+
+.tabs button {
+    height:50px;
+    font-family: 'Assistant',sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#F7FBFC;
+    border-radius:4px;
+    border:0;
+    outline:0;
+    padding:0 50px;
+    transition: all .2s ease-in;
+    margin-bottom:2.5rem;
+    cursor: pointer;
+}
+
+.tabs button:hover {
+    background:var(--primary);
+    color:#FFFFFF;
+}
+
+.tabs #user {
+    border-radius: 0 4px 4px 0;
+}
+
+.tabs #trainer {
+    border-radius: 4px 0 0 4px;
+}
+
+.tabs .active {
+    background:var(--primary);
+    color:#FFFFFF;
+}
+
+.login_form {
+    width:100%;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    flex-direction: column;
+    width:446px;
+}
+
+input {
+    width:100%;
+    background:transparent;
+    height:41px;
+    font-family: 'Assistant',sans-serif;
+    border:1px solid var(--primary);
+    border-radius:4px;
+    margin-bottom: 15px;
+    padding:5px 10px;
+    color:var(--primary);
+    font-size:18px;
+    font-weight: 500;
+}
+
+input::placeholder {
+    color:var(--primary);
+    font-size:18px;
+    font-weight: 500;
+}
+
+input[type="submit"] {
+    background:var(--secondary);
+    text-align: center;
+    border:0px;
+    transition: background .3s ease-in;
+    color:var(--text);
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: var(--light-secondary);
+}
+
+.social_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    flex-direction: column;
+    width:446px;
+}
+
+.social_login img {
+    width: 25px;
+    margin:0;
+    margin-right:13px;
+}
+
+#facebook_login {
+    width:100%;
+    height:41px;
+    font-family: 'Assistant',sans-serif;
+    border-radius:4px;
+    font-size:18px;
+    font-weight: 500;
+    background:#0080FE;
+    text-align: center;
+    border:0px;
+    color:#FFFFFF;
+    transition: background .3s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:1rem;
+    cursor: pointer;
+}
+
+#google_login {
+    width:100%;
+    height:41px;
+    font-family: 'Assistant',sans-serif;
+    border-radius:4px;
+    font-size:18px;
+    font-weight: 500;
+    background:#34A853;
+    text-align: center;
+    border:0px;
+    color:#FFFFFF;
+    transition: background .3s ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:1rem;
+    cursor: pointer;
+}
+
+#google_login:hover {
+    background:#62d882;
+}
+
+#facebook_login:hover {
+    background:#84bffa;
+}
+
+h4 {
+    text-align: center;
+    font-family: 'Assistant',sans-serif;
+    font-size:22px;
+    font-weight: 500;
+    color:var(--primary);
+    cursor: pointer;
+}
+
+
+.profileCompletion {
+    /* width:100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column; */
+}
+
+.profileCompletion h1 {
+    font-family: 'Assistant',sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color:var(--primary);
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.profileCompletion h2 {
+    font-family: 'Assistant',sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color:var(--primary);
+    text-align: center;
+    margin:0 0 1rem 0;
+}
+
+.profileCompletion label {
+    font-family: 'Assistant',sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color:var(--primary);
+    display: block;
+}
+
+select {
+    width:100%;
+    background:transparent;
+    height:41px;
+    font-family: 'Assistant',sans-serif;
+    border:1px solid var(--primary);
+    border-radius:4px;
+    margin-bottom: 15px;
+    padding:5px 10px;
+    color:var(--primary);
+    font-size:18px;
+    font-weight: 500;
+}
+
+select::placeholder {
+    color:var(--primary);
+    font-size:18px;
+    font-weight: 500;
+}
+
+.checkboxArea {
+    width:100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    gap:6px;
+    margin-bottom:1.5rem;
+}
+
+.content {
+    width:75%;
+    font-family: 'Assistant',sans-serif;
+    font-size:18px;
+    letter-spacing: 1.1px;
+    line-height: 24px;
+    font-weight: 400;
+    color:var(--primary)
+}
+
+.startNow {
+    width:320px;
+    height:47px;
+    background:var(--secondary);
+    font-family: 'Assistant',sans-serif;
+    font-weight: 700;
+    font-size:20px;
+    text-align: center;
+    border:0px;
+    transition: background .3s ease-in;
+    color:var(--text);
+    cursor: pointer;
+    border-radius:4px;
+}
+
+.startNow:hover {
+    background:var(--light-secondary)
+}
+ 
+.profileUpdate h1
+{
+    font-family: 'Assistant',sans-serif;
+
+    font-size: 24px;
+    font-weight: bold;
+    color:var(--primary);
+    text-align: center;
+    margin-bottom: 0 !important;
+}
+
+.welcome-msg {
+    margin:0;
+}
+
+.welcome-img {
+    margin-bottom:0 !important;
+}
