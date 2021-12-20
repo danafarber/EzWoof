@@ -6,6 +6,7 @@ import Home from './screens/Home';
 import Login from './screens/Login';
 import Register from './screens/Register';
 import UserProfileUpdate from './screens/userProfileUpdate';
+import reportWebVitals from './reportWebVitals';
 import './utils/global.css'
 
 ReactDOM.render(
