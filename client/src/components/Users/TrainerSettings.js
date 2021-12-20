@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { storage } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { storage } from "../../utils/firebase.js";
 
-function UserProfileUpdate(props) {
+function TrainerSettings(props) {
   const navigate = useNavigate();
   const [breeds, setBreeds] = useState();
   const [cities, setCities] = useState();
@@ -14,10 +14,12 @@ function UserProfileUpdate(props) {
   const [expertisePop, setExpertisePop] = useState("בחר מהרשימה");
 
   const [name, setName] = useState("");
-  const [petName, setPetName] = useState("");
   const [petBreed, setPetBreed] = useState("");
   const [petExpertise, setPetExpertise] = useState("");
   const [petLocation, setPetLocation] = useState("");
+  const [exp, setExp] = useState(1);
+  const [tip, setTip] = useState("");
+  const [pricing, setPricing] = useState("");
 
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
@@ -27,8 +29,8 @@ function UserProfileUpdate(props) {
   const citiesURL = "https://powerful-sierra-82767.herokuapp.com/utils/cities";
   const expertiseURL =
     "https://powerful-sierra-82767.herokuapp.com/utils/expertise";
-  const usersURL = "https://powerful-sierra-82767.herokuapp.com/users/";
-  const userID = localStorage.userID;
+  const trainersURL = "https://powerful-sierra-82767.herokuapp.com/trainers/";
+  const trainerID = localStorage.trainerID;
 
   React.useEffect(() => {
     axios.get(expertiseURL).then((response) => {
@@ -61,13 +63,15 @@ function UserProfileUpdate(props) {
   function updateProfile(e) {
     e.preventDefault();
 
-    const userObj = {
+    const trainerObj = {
       name: name,
-      pet_name: petName,
       dogRace: petBreed,
       expert: petExpertise,
       city: petLocation,
-      photo: imageAsUrl,
+      photos: [imageAsUrl],
+      experience: exp,
+      tip: tip,
+      pricing: pricing,
     };
 
     const headers = {
@@ -76,16 +80,16 @@ function UserProfileUpdate(props) {
 
     if (imageAsUrl) {
       axios
-        .patch(usersURL + userID, userObj, {
+        .patch(trainersURL + trainerID, trainerObj, {
           headers: headers,
         })
         .then((response) => {
           console.log(response);
           console.log(imageAsUrl);
-          navigate("/cards");
+          navigate("/chat");
         })
-        .catch((err) => {
-          console.log(err.response);
+        .catch((error) => {
+          console.log(error.response);
         });
     }
 
@@ -94,7 +98,7 @@ function UserProfileUpdate(props) {
       console.error(`not an image, the image file is a ${typeof imageAsFile}`);
     }
     const uploadTask = storage
-      .ref(`/users/${imageAsFile.name}`)
+      .ref(`/trainers/${imageAsFile.name}`)
       .put(imageAsFile);
     uploadTask.on(
       "state_changed",
@@ -106,7 +110,7 @@ function UserProfileUpdate(props) {
       },
       () => {
         storage
-          .ref("users")
+          .ref("trainers")
           .child(imageAsFile.name)
           .getDownloadURL()
           .then((fireBaseUrl) => {
@@ -121,31 +125,49 @@ function UserProfileUpdate(props) {
     setImageAsFile((imageFile) => image);
   };
 
+  function DeleteAccount(e) {
+    e.preventDefault();
+
+    axios
+      .delete(trainersURL + trainerID)
+      .then((response) => {
+        console.log(response);
+        localStorage.removeItem("trainerLoggedIn");
+        localStorage.removeItem("trainerID");
+        navigate("/login");
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  }
+
+  function LogOut() {
+    localStorage.removeItem("trainerLoggedIn");
+    localStorage.removeItem("trainerID");
+    navigate("/login");
+  }
+
   return (
-    <div className="profileCompletion">
-      <h1>היי,</h1>
-      <h2>ספר לנו קצת על עצמך:</h2>
+    <div data-testid="trainerProfile" className="profileCompletion">
+      <div className="card-top">
+        <h1>הגדרות</h1>
+        <img
+          src="../assets/back.svg"
+          alt="Back"
+          onClick={() => navigate("/chat")}
+        />
+      </div>
       <form>
         <label htmlFor="profileName">איך נקרא לך?</label>
         <input
-        required
           id="profileName"
           type="text"
           value={name}
           onInput={(e) => setName(e.target.value)}
         ></input>
 
-        <label htmlFor="profilePetName">איך קוראים לכלב שלך?</label>
-        <input
-          id="profilePetName"
-          type="text"
-          value={petName}
-          onInput={(e) => setPetName(e.target.value)}
-        ></input>
-
-        <label htmlFor="profilePetBreed">איזה גזע יש ברשותך?</label>
+        <label htmlFor="profilePetBreed">באילו גזעים אתה מתמחה?</label>
         <select
-        required
           id="profilePetBreed"
           onChange={populateBreeds}
           value={petBreed}
@@ -156,10 +178,19 @@ function UserProfileUpdate(props) {
           ))}
         </select>
 
-        <label htmlFor="profileExpertise">למה אתה מחפש מאלף?</label>
+        <label htmlFor="experienceTime">שנות ניסיון</label>
+        <input
+          id="experienceTime"
+          type="range"
+          min="1"
+          max="20"
+          onInput={(e) => setExp(e.target.value)}
+        />
+        <span className="sliderVal">{exp} שנות ניסיון</span>
+
+        <label htmlFor="profileExpertise">התמחויות</label>
 
         <select
-        required
           id="profileExpertise"
           onChange={populateExpertise}
           value={petExpertise}
@@ -172,7 +203,6 @@ function UserProfileUpdate(props) {
 
         <label htmlFor="profileLocation">איפה אתה גר?</label>
         <select
-        required
           id="profileLocation"
           onChange={populateCities}
           value={petLocation}
@@ -183,12 +213,44 @@ function UserProfileUpdate(props) {
           ))}
         </select>
 
-        <input required   type="file" onChange={handleImageAsFile} />
+        <label htmlFor="profileTip">
+          מה הטיפ שתרצה שבעלי-הכלבים האחרים יראו?
+        </label>
+        <input
+          id="profileTip"
+          type="text"
+          value={tip}
+          onInput={(e) => setTip(e.target.value)}
+        ></input>
 
-        <input type="submit" value="אשר פרופיל" onClick={updateProfile}></input>
+        <label htmlFor="profilePricing">כמה עולה שעת אילוף שלך?</label>
+        <input
+          id="profilePricing"
+          type="text"
+          value={pricing}
+          onInput={(e) => setPricing(e.target.value)}
+        ></input>
+
+        <input type="file" onChange={handleImageAsFile} />
+
+        <input
+          type="submit"
+          value="אשר פרופיל"
+          onClick={updateProfile}
+          name={name}
+        ></input>
+
+        <input id="logout" type="submit" value="התנתק" onClick={LogOut}></input>
+
+        <input
+          id="delete-account"
+          type="submit"
+          value="מחיקת חשבון"
+          onClick={DeleteAccount}
+        ></input>
       </form>
     </div>
   );
 }
 
-export default UserProfileUpdate;
+export default TrainerSettings;
