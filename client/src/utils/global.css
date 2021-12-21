@@ -1,43 +1,44 @@
 :root {
-    --primary: #006D77;
-    --secondary: #E29578;
-    --light-secondary: #FFDDD2;
-    --light-primary:#EDF6F9;
-    --text: #083A3E;
+  --primary: #006d77;
+  --secondary: #e29578;
+  --light-secondary: #ffddd2;
+  --light-primary: #edf6f9;
+  --text: #083a3e;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-html,body {
-    direction:rtl;
-    height: 100%;
-    width:100%;
-    background: var(--light-primary);
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
+html,
+body {
+  direction: rtl;
+  height: 100%;
+  width: 100%;
+  background: var(--light-primary);
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 a {
-    text-decoration: none;
-    color:var(--primary);
+  text-decoration: none;
+  color: var(--primary);
 }
 
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .main {
-    width:1030px;
-    height:100%;
-    background: url('../assets/admin_bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: 'Assistant',sans-serif;
+  width: 1030px;
+  height: 100%;
+  background: url("../assets/admin_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Assistant", sans-serif;
 }
