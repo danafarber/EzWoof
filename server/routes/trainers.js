@@ -1,13 +1,20 @@
 const express = require('express');
 const router = express.Router();
 const Trainer = require('../models/trainers.js')
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const trainers = require('../models/trainers.js');
 
 // get all trainers
 router.get('/', async (req,res) => {
     try {
-        const trainers = await Trainer.find();
-        res.json(trainers)
+        const trainers = await Trainer.find()
+        .populate('city')
+        .populate('expert')
+        .populate('dogRace')
+        .exec((err, trainers) => {
+          res.status(200).json(trainers);
+        });
+        
     }
     catch(err) {
         res.status(500).json({message: err.message});
@@ -25,10 +32,10 @@ router.post('/', async (req,res) => {
         name: req.body.name,
         email:req.body.email,
         password:req.body.password,
-        dogRaces: mongoose.Types.ObjectId(req.body.dogRaces),
+        dogRace: mongoose.Types.ObjectId(req.body.dogRace),
         experience:req.body.experience,
         expert:mongoose.Types.ObjectId(req.body.expert),
-        location:mongoose.Types.ObjectId(req.body.city),
+        city:mongoose.Types.ObjectId(req.body.city),
         tip:req.body.tip,
         photos:req.body.photos,
         pricing:req.body.pricing
@@ -65,8 +72,28 @@ router.patch('/:id', getTrainer, async (req,res) => {
         res.trainer.pricing = req.body.pricing
     }
 
+    if(req.body.experience != null) {
+        res.trainer.experience = req.body.experience
+    }
+
+    if (req.body.dogRace != null) {
+        res.trainer.dogRace = mongoose.Types.ObjectId(req.body.dogRace)
+    }
+
+    if (req.body.expert != null) {
+        res.trainer.expert = [mongoose.Types.ObjectId(req.body.expert)]
+    }
+
+    if (req.body.city != null) {
+        res.trainer.city = mongoose.Types.ObjectId(req.body.city)
+    }
+
     if(req.body.verifiedStatus != null) {
         res.trainer.verifiedStatus = req.body.verifiedStatus
+    }
+
+    if(req.body.photos != null) {
+        res.trainer.photos = req.body.photos
     }
 
     try {
@@ -96,6 +123,12 @@ async function getTrainer(req,res,next) {
 
     try {
         trainer = await Trainer.findById(req.params.id)
+        .populate('city')
+        .populate('expert')
+        .populate('dogRace')
+        .exec();
+        
+
         if (trainer == null) {
             return res.status(404).json({message: 'Cannot find trainer'});
         }
@@ -103,6 +136,8 @@ async function getTrainer(req,res,next) {
     catch(err) {
         return res.status(500).json({message: err.message});
     }
+
+    
 
     res.trainer = trainer
     next()

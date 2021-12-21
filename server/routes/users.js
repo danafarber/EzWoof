@@ -6,8 +6,13 @@ const mongoose = require('mongoose')
 // get all users
 router.get('/', async (req,res) => {
     try {
-        const users = await User.find();
-        res.json(users)
+        const users = await User.find()
+        .populate('city')
+        .populate('expert')
+        .populate('dogRace')
+        .exec((err, trainers) => {
+          res.status(200).json(trainers);
+        });
     }
     catch(err) {
         res.status(500).json({message: err.message});
@@ -26,9 +31,9 @@ router.post('/', async (req,res) => {
         pet_name:req.body.pet_name,
         email:req.body.email,
         password:req.body.password,
-        dogRaces:mongoose.Types.ObjectId(req.body.dogRaces),
+        dogRace:mongoose.Types.ObjectId(req.body.dogRace),
         expert:[mongoose.Types.ObjectId(req.body.expert)],
-        location: mongoose.Types.ObjectId(req.body.location),
+        city: mongoose.Types.ObjectId(req.body.city),
         photo:req.body.photo
     })
 
@@ -59,31 +64,31 @@ router.patch('/:id', getUser, async (req,res) => {
     } 
 
     if (req.body.pet_name != null) {
-        req.user.pet_name = req.body.pet_name
+        res.user.pet_name = req.body.pet_name
     }
 
     if (req.body.email != null) {
-        req.user.email = req.body.email
+        res.user.email = req.body.email
     }
 
     if (req.body.password != null) {
-        req.user.password = req.body.password
+        res.user.password = req.body.password
     }
 
-    if (req.body.dogRaces != null) {
-        req.user.dogRaces = mongoose.Types.ObjectId(req.body.dogRaces)
+    if (req.body.dogRace != null) {
+        res.user.dogRace = mongoose.Types.ObjectId(req.body.dogRace)
     }
 
     if (req.body.expert != null) {
-        req.user.expert = [mongoose.Types.ObjectId(req.body.expert)]
+        res.user.expert = [mongoose.Types.ObjectId(req.body.expert)]
     }
 
-    if (req.body.location != null) {
-        req.user.location = mongoose.Types.ObjectId(req.body.location)
+    if (req.body.city != null) {
+        res.user.city = mongoose.Types.ObjectId(req.body.city)
     }
 
-    if (req.body.photos != null) {
-        req.user.photos = req.body.photos
+    if (req.body.photo != null) {
+        res.user.photo = req.body.photo
     }
 
     try {
@@ -102,9 +107,16 @@ async function getUser(req,res,next) {
 
     try {
         user = await User.findById(req.params.id)
+
+        .populate('city')
+        .populate('expert')
+        .populate('dogRace')
+        .exec();
+        
         if (user == null) {
             return res.status(404).json({message: 'Cannot find user'});
         }
+        
     } 
     catch(err) {
         return res.status(500).json({message: err.message});
