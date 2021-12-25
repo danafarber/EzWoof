@@ -490,3 +490,257 @@ select::placeholder {
   .navbar button img:hover {
     transform: scale(0.9);
   }
+
+  .chat-list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .card-top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    flex-direction: row;
+    font-family: "Assistant", sans-serif;
+  }
+  
+  .card-top h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0 !important;
+  }
+  
+  .card-top img {
+    cursor: pointer;
+  }
+  
+  .card-fw {
+    width: 100%;
+    height: 532px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+    box-shadow: 0 9px 14px #13242642;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+  }
+  
+  .card-fw .bottom-bar {
+    position: relative;
+    bottom: 0px;
+    border-radius: 0 0 4px 4px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-fw .bottom-bar .bottom-bar-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+  }
+  
+  .card-fw .bottom-bar h3 {
+    color: #fff;
+    margin: 0;
+  }
+  
+  .card-fw .bottom-bar h4 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 200;
+    cursor: default !important;
+    margin: 0;
+  }
+  
+  .breeds,
+  .expertise {
+    margin-top: 18px;
+    width: 100%;
+    color: var(--primary);
+    text-align: right;
+  }
+  
+  .breeds h5,
+  .expertise h5 {
+    color: var(--primary);
+    font-weight: 500;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+  }
+  
+  .breeds span {
+    background: var(--secondary);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 6px 15px;
+    margin-top: 8px;
+    border-radius: 4px;
+  }
+  
+  .expertise span {
+    background: var(--primary);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 6px 15px;
+    margin-top: 8px;
+    border-radius: 4px;
+  }
+  
+  .decisions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+    padding: 0 40px;
+    margin-bottom: 3rem;
+  }
+  
+  .decisions button {
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background: transparent;
+  }
+  
+  .decisions button img {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .decisions button img:hover {
+    transform: scale(0.9);
+  }
+  
+  #logout {
+    background: #CCCCCC;
+    margin-top:2rem;
+  }
+  
+  #delete-account {
+    background:#E27878 !important;
+    color:#FFF;
+  }
+  
+  .chat-row {
+    width:100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: "Assistant", sans-serif;
+    margin-top:1rem;
+    cursor: pointer;
+  }
+  
+  .chat-row .chat-details {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    width:100%;
+  }
+  
+  .chat-row img {
+    margin: 0 0 0 13px;
+    width:64px;
+    height:64px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  
+  .chat-details h2 {
+    margin:0;
+    font-size:22;
+    font-weight: 700;
+    color:var(--primary)
+  }
+  
+  .chat-details p {
+    margin:0;
+    font-size:18px;
+    font-weight: 300;
+    color: var(--text);
+    border: 0;
+    border-bottom:1px;
+    border-color: #A2B0B5;
+    border-style: solid;
+    padding: 0 0 15px 0;
+    width:100%;
+  }
+  
+  .sendMsg {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    display: grid;
+    grid-template-columns: 70% 25%;
+    gap:16px;
+    padding: 10px 20px;
+    background-color: #EDF6F9;
+  }
+  
+  .sendMsg input {
+    margin:0 !important;
+  }
+  
+  .sendMsg input[type="submit"] {
+    background: var(--primary);
+    color:#FFF;
+  }
+  .sendMsg input[type="submit"]:hover {
+    background: var(--text);
+    color:#FFF;
+  }
+  
+  .conversation {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 5rem;
+    overflow-y: scroll;
+  }
+  
+  .conversation::-webkit-scrollbar {
+    width: 0; 
+    background: transparent;
+  }
+  
+  .chat-bubble {
+    background:var(--light-secondary);
+    padding:10px 20px;
+    margin: 14px 0;
+    width: max-content;
+    border-radius: 4px;
+    font-size:16px;
+    font-weight: 400;
+    align-self: flex-end;
+  }
+  
+  .chat-bubble-me {
+    background:var(--secondary);
+    padding:10px 20px;
+    margin: 14px 0;
+    width: max-content;
+    border-radius: 4px;
+    font-size:16px;
+    font-weight: 400;
+  }
