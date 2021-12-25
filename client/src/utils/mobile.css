@@ -375,3 +375,118 @@ select::placeholder {
 .startNow:hover {
     background:var(--light-secondary)
 }
+
+.profileUpdate h1 {
+    font-family: "Assistant", sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 0 !important;
+  }
+
+  .welcome-msg {
+    margin: 0;
+  }
+  
+  .welcome-img {
+    margin-bottom: 0 !important;
+  }
+
+  .card {
+    background-position: center center;
+    height: 607px;
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 0 9px 14px #13242642;
+    position: relative;
+    background-size: cover;
+    padding: 0;
+    font-family: "Assistant", sans-serif;
+  }
+  
+  .swipe {
+    top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+    position: absolute;
+  }
+  
+  .card .bottom-bar {
+    position: absolute;
+    bottom: 0px;
+    border-radius: 0 0 4px 4px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .card .bottom-bar .bottom-bar-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+  }
+  
+  .card .bottom-bar h3 {
+    color: #fff;
+    margin: 0;
+  }
+  
+  .card .bottom-bar h4 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 200;
+    cursor: default !important;
+    margin: 0;
+  }
+  
+  .cards-main {
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Assistant", sans-serif;
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+  }
+  
+  .cards-main .colored-logo {
+    margin: 1rem 0 0 0;
+  }
+
+  .navbar {
+    position: fixed;
+    bottom: 2rem;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .navbar button {
+    cursor: pointer;
+    outline: 0;
+    border: 0;
+    background: transparent;
+  }
+  
+  .navbar button img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .navbar button img:hover {
+    transform: scale(0.9);
+  }
