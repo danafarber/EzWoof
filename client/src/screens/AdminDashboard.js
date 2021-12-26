@@ -4,6 +4,7 @@ import axios from "axios";
 import TrainerList from "../components/Admin/TrainerList";
 import UserList from "../components/Admin/UserList";
 import { useNavigate } from 'react-router-dom';
+import { CSVLink } from "react-csv";
 
 function AdminDashboard() {
 
@@ -36,6 +37,39 @@ function AdminDashboard() {
   const trainersCount = trainers.length;
   const usersCount = users.length;
   const matchesCount = matches.length;
+
+  const csvHeaders = [
+    { label: "ID", key: "_id"},
+    {label: "Name", key: "name"},
+    {label: "Email", key: "email"},
+    {label: "Registration Date", key: "registrationDate"}
+  ]
+
+  const csvHeadersMatches =[
+    {label:"Match ID", key: "_id"},
+    {label:"User Matched",key:"user.name"},
+    {label:"Trainer Matched",key:"trainer.name"},
+    {label: "Match Date", key: "date"}
+
+  ]
+
+  const csvExportUsers = {
+    data: users,
+    headers:csvHeaders,
+    filename: 'EZ-users-report.csv'
+  }
+
+  const csvExportTrainers = {
+    data: trainers,
+    headers:csvHeaders,
+    filename: 'EZ-trainers-report.csv'
+  }
+  const csvExportMatches = {
+    data: matches,
+    headers:csvHeadersMatches,
+    filename: 'EZ-matches-report.csv'
+  }
+
 
   function checkLoginStatus() {
     const lsValidate = localStorage.hasOwnProperty("adminLoggedIn");
@@ -78,6 +112,12 @@ function AdminDashboard() {
           <h3>שידוכים שנוצרו</h3>
         </div>
       </div>
+
+      <div className="exports">
+        <CSVLink {...csvExportUsers}>יצוא משתמשים</CSVLink>
+        <CSVLink {...csvExportTrainers}>יצוא מאלפים</CSVLink>
+        <CSVLink {...csvExportMatches}>יצוא התאמות</CSVLink>
+        </div>
 
       <div className="admin-list">
         <div className="grid">

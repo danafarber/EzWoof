@@ -285,3 +285,15 @@ input[type="submit"]:hover {
 .user-row button img:hover {
   transform: scale(0.9);
 }
+
+.exports {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  color:var(--text);
+  margin-top: 1rem;
+}
+
+.exports a {
+  margin-left:16px;
+}
