@@ -231,14 +231,17 @@ function UserSettings(props) {
           onClick={updateProfile}
         ></input>
 
-        <input id="logout" type="submit" value="התנתק" onClick={LogOut}></input>
 
+        <input id="logout" type="submit" value="התנתק" onClick={LogOut}></input>
+       
         <input
           id="delete-account"
           type="submit"
           value="מחיקת חשבון"
           onClick={DeleteAccount}
+          
         ></input>
+         <a id="mailto" href ="mailto:ezwoof10@gmail.com">צור קשר</a>
       </form>
     </div>
   );
