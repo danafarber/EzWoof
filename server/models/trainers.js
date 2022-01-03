@@ -19,7 +19,7 @@ const trainerSchema = new mongoose.Schema({
         default: Date.now,
     },
 
-    dogRaces: {
+    dogRace: {
         type:mongoose.Types.ObjectId, ref:"DogRace"
     },
 
@@ -31,7 +31,7 @@ const trainerSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId, ref:"Expert"
     },
 
-    location: {
+    city: {
         type:mongoose.Types.ObjectId, ref:"City"
     },
 

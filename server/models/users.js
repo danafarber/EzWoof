@@ -7,8 +7,7 @@ const userSchema = new mongoose.Schema({
     },
 
     pet_name: {
-        type:String,
-        required:true,
+        type:String
     },
 
     email: {
@@ -25,7 +24,7 @@ const userSchema = new mongoose.Schema({
         default: Date.now,
     },
 
-    dogRaces: {
+    dogRace: {
         type:mongoose.Types.ObjectId, ref:"DogRace"
     },
 
@@ -33,7 +32,7 @@ const userSchema = new mongoose.Schema({
         type:mongoose.Types.ObjectId, ref:"Expert"
     },
 
-    location: {
+    city: {
         type:mongoose.Types.ObjectId, ref:"City"
     },
 

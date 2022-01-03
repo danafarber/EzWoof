@@ -26,6 +26,9 @@ app.use('/trainers', trainersRouter);
 const adminsRouter = require('./routes/admins.js')
 app.use('/admins', adminsRouter);
 
+const matchesRouter = require('./routes/matches.js')
+app.use('/matches', matchesRouter);
+
 const citiesRouters = require('./routes/cities.js')
 app.use('/utils/cities', citiesRouters);
 
@@ -34,6 +37,9 @@ app.use('/utils/breeds', breedRouters);
 
 const expertiseRouter = require('./routes/expertise.js')
 app.use('/utils/expertise', expertiseRouter);
+
+const chatsRouter = require('./routes/chats.js')
+app.use('/chats', chatsRouter);
 
 // Listner
 app.listen(process.env.PORT || 4000, () => console.log('Server up and running on port'));
