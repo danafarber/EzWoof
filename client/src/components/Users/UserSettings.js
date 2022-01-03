@@ -22,6 +22,8 @@ function UserSettings(props) {
   const [petExpertise, setPetExpertise] = useState("");
   const [petLocation, setPetLocation] = useState("");
 
+  const [matches, setMatches] = useState();
+
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
@@ -32,6 +34,7 @@ function UserSettings(props) {
     "https://powerful-sierra-82767.herokuapp.com/utils/expertise";
   const usersURL = "https://powerful-sierra-82767.herokuapp.com/users/";
   const userID = localStorage.userID;
+  const matchesURL = "https://powerful-sierra-82767.herokuapp.com/matches/";
 
   React.useEffect(() => {
     axios.get(expertiseURL).then((response) => {
@@ -46,12 +49,17 @@ function UserSettings(props) {
     axios.get(usersURL + userID).then((response) => {
       setUser(response.data);
     });
+    axios.get(matchesURL).then((response) => {
+      setMatches(response.data);
+    });
     // eslint-disable-next-line
   }, []);
   if (!expertise) return null;
   if (!breeds) return null;
   if (!cities) return null;
   if (!user) return null;
+  if (!matches) return null;
+
 
   function populateCities(e) {
     setCityPop(e.target.value);
@@ -151,8 +159,22 @@ function UserSettings(props) {
       });
   }
 
+  let UserMatch=[];
+  
+  function countMatchesUser() {
+    const matchObj = Object.values(matches);
+    for (let i = 0; i < matchObj.length; i++) {
+      if (matchObj[i].user._id === userID) {
+        UserMatch.push('match');
+      }
+    }
+  }
+ 
+  countMatchesUser();
+  const UserMatchCount = UserMatch.length;
+
   return (
-    <div className="profileCompletion">
+    <div data-testid="settings" className="profileCompletion">
       <div className="card-top">
         <h1>הגדרות</h1>
         <img
@@ -224,7 +246,7 @@ function UserSettings(props) {
         </select>
 
         <input type="file" onChange={handleImageAsFile} />
-
+        <h2>מספר ההתאמות שלי: {UserMatchCount}</h2>
         <input
           type="submit"
           value="עדכן פרופיל"

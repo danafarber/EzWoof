@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { matchRoutes, useNavigate } from "react-router-dom";
 import { storage } from "../../utils/firebase.js";
 
 function TrainerSettings(props) {
@@ -21,6 +21,8 @@ function TrainerSettings(props) {
   const [tip, setTip] = useState("");
   const [pricing, setPricing] = useState("");
 
+  const [matches, setMatches] = useState();
+
   const allInputs = { imgUrl: "" };
   const [imageAsFile, setImageAsFile] = useState("");
   const [imageAsUrl, setImageAsUrl] = useState(allInputs);
@@ -31,6 +33,7 @@ function TrainerSettings(props) {
     "https://powerful-sierra-82767.herokuapp.com/utils/expertise";
   const trainersURL = "https://powerful-sierra-82767.herokuapp.com/trainers/";
   const trainerID = localStorage.trainerID;
+  const matchesURL = "https://powerful-sierra-82767.herokuapp.com/matches/";
 
   React.useEffect(() => {
     axios.get(expertiseURL).then((response) => {
@@ -42,11 +45,15 @@ function TrainerSettings(props) {
     axios.get(breedsURL).then((response) => {
       setBreeds(response.data);
     });
+    axios.get(matchesURL).then((response) => {
+      setMatches(response.data);
+    });
     // eslint-disable-next-line
   }, []);
   if (!expertise) return null;
   if (!breeds) return null;
   if (!cities) return null;
+  if (!matches) return null;
 
   function populateCities(e) {
     setCityPop(e.target.value);
@@ -146,6 +153,22 @@ function TrainerSettings(props) {
     localStorage.removeItem("trainerID");
     navigate("/login");
   }
+  
+  let TrainerMatch=[];
+  
+  function countMatchesTrainer() {
+    const matchObj = Object.values(matches);
+    for (let i = 0; i < matchObj.length; i++) {
+      if (matchObj[i].trainer._id === trainerID) {
+        TrainerMatch.push('match');
+      }
+    }
+  }
+
+  countMatchesTrainer();
+  const trainerMatchCount = TrainerMatch.length;
+
+
 
   return (
     <div data-testid="trainerProfile" className="profileCompletion">
@@ -232,7 +255,7 @@ function TrainerSettings(props) {
         ></input>
 
         <input type="file" onChange={handleImageAsFile} />
-
+        <h2>מספר ההתאמות שלי: {trainerMatchCount}</h2>
         <input
           type="submit"
           value="אשר פרופיל"

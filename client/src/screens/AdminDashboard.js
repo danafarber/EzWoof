@@ -98,7 +98,7 @@ function AdminDashboard() {
     <div className="dashboard-container">
       <AdminTopBar />
 
-      <div className="stats">
+      <div data-testid="adminDashboard" className="stats">
         <div className="usersCount">
           <h2>{usersCount}</h2>
           <h3>בעלי-כלבים רשומים</h3>

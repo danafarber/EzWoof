@@ -7,7 +7,8 @@ function Settings() {
   let isTrainer = localStorage.trainerLoggedIn;
 
   return (
-    <>
+    <> 
+      
       {isUser ? <UserSettings /> : null}
       {isTrainer ? <TrainerSettings /> : null}
     </>

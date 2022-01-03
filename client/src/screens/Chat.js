@@ -26,6 +26,8 @@ function Chat() {
   let userChats = [];
   let trainerChats = [];
 
+  console.log(chats);
+
   function popUserChats() {
     for (let i = 0; i < chats.length; i++) {
       if (chats[i].match.user._id === userID) {
@@ -33,6 +35,7 @@ function Chat() {
       }
     }
   }
+
 
   function popTrainerChats() {
     for (let i = 0; i < chats.length; i++) {
@@ -44,12 +47,12 @@ function Chat() {
 
   if (userID) {
     popUserChats();
-    console.log(userChats);
+    // console.log(userChats);
   }
 
   if (trainerID) {
     popTrainerChats();
-    console.log(trainerChats);
+    // console.log(trainerChats);
   }
 
   return (
