@@ -4,7 +4,7 @@ import Login from '../screens/Login';
 import Register from '../screens/Register'
 import Home from '../screens/Home'
 
-test("should render home", () => {
+/*test("should render home", () => {
   const tree = render(
     <BrowserRouter>
       <Home />
@@ -32,4 +32,4 @@ test("should render register", () => {
   );
   const registerElement = screen.getByTestId("register");
   expect(registerElement).toBeInTheDocument;
-});
+});*/
